@@ -2,7 +2,7 @@
 export EDITOR=vim
 
 #source the colors configuration
-source "$HOME/Development/dots/bash/conf/colors"
+source "$HOME/.dots/bash/conf/colors"
 
 #source the bashline configuration
-source "$HOME/Development/dots/bash/conf/bashline"
+source "$HOME/.dots/bash/conf/bashline"
