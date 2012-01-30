@@ -35,3 +35,24 @@
 
 [diff]
   ignoreSubmodules = dirty
+
+[alias]
+  l = log
+  lg = log --graph --pretty=format:'%C(yellow)%h %Cblue%aN %Cgreen%ar %Creset%s'
+  ls = log --stat
+  last = log -1 HEAD
+  w = log --name-status #short whatchanged
+  s = show
+  d = diff
+  ds = diff --staged
+  st = status
+  ss = status -s
+  ci = commit
+  co = checkout
+  cf = "!git ss | grep UU --color"
+  ccf = "!git ss | grep UU --color | wc -l"
+  br = branch
+  p = push
+  r = remote
+  unstage = reset HEAD --
+  sr = svn rebase

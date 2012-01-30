@@ -18,3 +18,4 @@ case `uname -s` in
 esac
 alias v="vim"
 alias g="git"
+alias gg="cd ~/work/gap/workspace"
