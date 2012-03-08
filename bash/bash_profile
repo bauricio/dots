@@ -71,4 +71,4 @@ fi
   }
 
   alias iso='while sleep 1; do echo "Going ..."; curl -s "http://ft04.gid.gap.com:8000/invoke?operation=build&amp;objectname=CruiseControl+Project%3Aname%3Dtrunk-allocation.isolated.functional-test" | grep 'Invocation'; done'
-
+export PATH=/usr/local/bin/:$PATH
