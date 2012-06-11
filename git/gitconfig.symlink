@@ -56,3 +56,4 @@
   r = remote
   unstage = reset HEAD --
   sr = svn rebase
+  aa = add --all .
