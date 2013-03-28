@@ -1,6 +1,6 @@
 [user]
-  name = Mauricio Sanches 
-  email = mauricio.silveira.sanches@gmail.com 
+	name = Mauricio Sanches
+	email = mauricio.silveira.sanches@gmail.com
 
 [color]
   status = auto
@@ -29,7 +29,7 @@
   untracked = red
 
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/mauricio/.gitignore
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,space-before-tab,cr-at-eol
 
@@ -48,6 +48,7 @@
   st = status
   ss = status -s
   ci = commit
+  cia = commit --amend -C HEAD
   co = checkout
   cf = "!git ss | grep UU --color"
   ccf = "!git ss | grep UU --color | wc -l"
@@ -56,4 +57,11 @@
   r = remote
   unstage = reset HEAD --
   sr = svn rebase
+  sc = svn dcommit
   aa = add --all .
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
