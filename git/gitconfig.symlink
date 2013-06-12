@@ -61,6 +61,7 @@
   sc = svn dcommit
   aa = add --all .
   up = log origin/master..HEAD
+  ll = !git log --color=always -z | perl -ln0e 'print unless /git-svn-id/' | less -FRX
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
