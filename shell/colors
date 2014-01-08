@@ -1,0 +1,4 @@
+# enable color support of ls
+export CLICOLOR=1
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+export GREP_COLOR="1;31"

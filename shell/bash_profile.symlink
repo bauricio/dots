@@ -1,0 +1,19 @@
+source "$HOME/.dots/shell/path"
+source "$HOME/.dots/shell/aliases"
+source "$HOME/.dots/shell/functions"
+source "$HOME/.dots/shell/general"
+source "$HOME/.dots/shell/rvm"
+source "$HOME/.dots/shell/bash_completion"
+source "$HOME/.dots/shell/client"
+source "$HOME/.dots/shell/colors"
+source "$HOME/.dots/shell/bashline"
+
+#source bash_profile.local if it exists
+if [ -e "$HOME/.bash_profile.local" ]; then
+  source "$HOME/.bash_profile.local"
+fi
+
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
+
+#bash only configs
+HISTFILESIZE=2500

@@ -1,0 +1,16 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="bauricio"
+
+plugins=(git bundler rvm)
+
+source $ZSH/oh-my-zsh.sh
+
+source "$HOME/.dots/shell/aliases"
+source "$HOME/.dots/shell/client"
+source "$HOME/.dots/shell/functions"
+source "$HOME/.dots/shell/colors"
+source "$HOME/.dots/shell/general"
+
+export PATH=/usr/local/share:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/share/npm/bin:/Users/mauricio/.rvm/bin

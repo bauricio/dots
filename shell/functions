@@ -1,0 +1,130 @@
+#!/bin/bash
+myfind() {
+  FFOUND_PWD=${PWD}
+  FFOUND=($(find . -iname "*$2*" -type "$1"))
+  print_found
+}
+
+print_found() {
+  if [ "${#FFOUND[*]}" -eq 0 ]; then return; fi
+  local index=1
+  echo ${FFOUND[*]} | tr -s ' ' '\n' | while read line; do
+  if [ -t 1 ]; then printf "% 4d " $index; fi
+  echo $line
+  index=$((index + 1))
+done
+}
+
+lf() { print_found; }
+
+ff() { myfind "f" "$1"; }
+
+fd() { myfind "d" "$1"; }
+
+fn() {
+  [ ! -z ${FFOUND[$1-1]} ] && echo ${FFOUND_PWD}/${FFOUND[$1-1]};
+}
+
+vf() { vi $(fn "$1"); }
+
+d() { cd $(dirname $(fn "$1")); }
+
+c() { cat $(fn "$1"); }
+
+gall() {
+  for f in * 
+      do 
+        echo $f
+        (cd $f && g stash && g sr && cd ..)
+    done
+}
+
+vm() {
+  rdesktop -r clipboard:CLIPBOARD -u ma3w3m0 -d gid -p access4MS8 -a 24 -g 1280x700  -z sfvd-macroq-03.gid.gap.com
+}
+
+
+send_commits() {
+  if [ "$#" -ne "2" ]; then echo "Usage: send_commits number-of-commits /path/to/mounted/workspace/project" >&2; return 1; fi
+
+  git log --name-status -n "$1" | grep 'ecom' | sort -k2 | uniq -f1 | while read status line;
+  do
+    from="$line";
+    to="${2}/${line#*/}";
+    case "$status" in
+      A|M)
+        echo "Copying from:"; echo "    ${from}"; echo "to"; echo "    ${to}";
+        mkdir -p "$(dirname "${to}")"
+        /bin/cp -f "${from}" "${to}"
+        ;;
+      D)
+        echo "Deleting file: $to"
+        /bin/rm -f "$to"
+        ;;
+    esac
+    echo "---- ---- ---- ---- ----"
+  done
+}
+
+echo_send() {
+  if [ "$#" -ne "2" ]; then echo "Usage: send_commits number-of-commits /path/to/mounted/workspace/project" >&2; return 1; fi
+
+  git log --name-status -n "$1" | grep 'ecom' | sort -k2 | uniq -f1 | while read status line;
+  do
+    from="$line";
+    to="${2}/${line#*/}";
+    echo "$line - $status - $from - $to";
+  done
+}
+
+send_modified_files () { 
+  if [ "$#" -ne "1" ]; then
+    echo "Usage: send_modified_files /path/on/vm/to/workspace/project" 1>&2;
+    return 1;
+  fi;
+  git ls-files --modified | while read line;
+  do
+    from="$line";
+    to="${1}/${line#*/}";
+    echo /bin/cp -f "'${from}'" "'${to}'";
+    mkdir -p "$(dirname "${to}")";
+    /bin/cp -f "${from}" "${to}";
+  done
+}
+
+add_lines () { 
+  echo "Adding lines"
+  if [ "$#" -ne "4" ]; then
+    echo "Usage: add_lines <pattern_to_find> <line_to_add_after_pattern> <file_name_pattern_to_search> <pattern_to_exclude>";
+    return;
+  fi;
+  for i in $(find . -iname "*$3*" -type "f" | grep -v $4);
+  do
+    add_line_after "$1" "$2" "$i" > /tmp/addLineAfter;
+    mv -v /tmp/addLineAfter $i;
+  done
+}
+
+add_line_after () { 
+  /usr/bin/awk -v pattern="$1" -v new_line="$2" '{ print $0; if ( $0 ~ pattern ) { print new_line; } }' < $3
+}
+
+last_rev() {
+  if [ "$#" -ne "1" ]; then
+    echo "Usage: last_rev story_number";
+    return 1;
+  fi;
+  git log --grep="$1:" | egrep -o "@\d.* " | sed 's/@//g' | head -n1;
+}
+
+last_svn_ref_for() {
+  if [ "$#" -lt "1" ]; then
+    echo "Usage: last_svn_ref_for story_number";
+    return 1;
+  fi;
+  log_size=500
+  if [ -n "$2" ]; then
+    log_size=$2
+  fi;
+  svn log -l $log_size $svn_address | grep -B2 "$1:" | egrep "r\d.*" | awk '{print $1;}' | sed 's/r//g'; 
+}
