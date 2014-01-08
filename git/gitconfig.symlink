@@ -1,6 +1,6 @@
 [user]
 	name = Mauricio Sanches
-	email = mauricio.silveira.sanches@gmail.com
+	email = msanches@thoughtworks.com 
 
 [color]
   status = auto
@@ -55,11 +55,12 @@
   ccf = "!git ss | grep UU --color | wc -l"
   br = branch
   p = push
+  pr = pull -r
   r = remote
   unstage = reset HEAD --
   sr = svn rebase
   sc = svn dcommit
-  aa = add --all .
+  aa = add --all
   up = log origin/master..HEAD
   ll = !git log --color=always -z | perl -ln0e 'print unless /git-svn-id/' | less -FRX
 [difftool "sourcetree"]
@@ -68,3 +69,5 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[push]
+  default = simple
