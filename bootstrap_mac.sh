@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #### Development basics ####
 # xcode command line tools
 if ! type brew > /dev/null; then
@@ -11,9 +10,6 @@ brew install git
 
 brew tap phinze/cask
 brew install brew-cask
-
-git clone https://github.com/bauricio/dots ~/.dots
-~/.dots/rake install 
 
 #Download vagrant 
 brew cask install vagrant
@@ -38,6 +34,17 @@ brew install bash-completion
 # F keys as functions
 defaults write com.apple.keyboard.fnState -boolean true
 
+DOTS_DIR="$HOME/.dots";
+if [ ! -d "$DOTS_DIR" ]; then
+  git clone https://github.com/bauricio/dots $DOTS_DIR
+  $DOTS_DIR/rake install 
+fi
+
+VIM_DIR="$HOME/.vim";
+if [ ! -d "$VIM_DIR" ]; then
+  git clone https://github.com/bauricio/vim-files $VIM_DIR
+  $VIM_DIR/install.sh
+fi
 
 #### Productivity ####
 
@@ -45,13 +52,16 @@ defaults write com.apple.keyboard.fnState -boolean true
 brew cask install screenhero
 
 # evernote
-brew cask evernote
+brew cask install evernote
 
 # caffeine
-brew cask caffeine
+brew cask install caffeine
 
 # alfred
 brew cask install alfred
+# add cask to alfred search scope
+brew cask alfred link
+
 # change shortcut (remove spotlight default and replace by alfred)
 /usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Delete AppleSymbolicHotKeys:64' > /dev/null 2>&1
 /usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Add AppleSymbolicHotKeys:64:enabled bool false'
@@ -69,3 +79,4 @@ brew cask install dropbox
 
 #### Fun ####
 brew cask install steam
+brew cask install spotify
