@@ -33,6 +33,7 @@ brew install bash-completion
 # Caps->Control
 # F keys as functions
 defaults write com.apple.keyboard.fnState -boolean true
+defaults write -g ApplePressAndHoldEnabled 0
 
 DOTS_DIR="$HOME/.dots";
 if [ ! -d "$DOTS_DIR" ]; then
