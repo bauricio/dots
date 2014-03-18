@@ -11,7 +11,7 @@ brew install git
 brew tap phinze/cask
 brew install brew-cask
 
-#Download vagrant 
+#Download vagrant
 brew cask install vagrant
 
 # sublime
@@ -26,6 +26,7 @@ brew cask install intellij-idea
 brew install tree
 brew install ack
 brew install bash-completion
+brew install ssh-copy-id
 
 # use solarize colors on iterm2
 # set global shortcut for iterm2
@@ -38,7 +39,7 @@ defaults write -g ApplePressAndHoldEnabled 0
 DOTS_DIR="$HOME/.dots";
 if [ ! -d "$DOTS_DIR" ]; then
   git clone https://github.com/bauricio/dots $DOTS_DIR
-  $DOTS_DIR/rake install 
+  $DOTS_DIR/rake install
 fi
 
 VIM_DIR="$HOME/.vim";
