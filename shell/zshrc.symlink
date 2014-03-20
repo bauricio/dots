@@ -14,3 +14,5 @@ source "$HOME/.dots/shell/colors"
 source "$HOME/.dots/shell/general"
 
 export PATH=/usr/local/share:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/share/npm/bin:/Users/mauricio/.rvm/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

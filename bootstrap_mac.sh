@@ -1,7 +1,10 @@
 #!/bin/bash
-
 #### Development basics ####
 # xcode command line tools
+if ! type rvm > /dev/null; then
+  curl -sSL https://get.rvm.io | bash
+fi
+
 if ! type brew > /dev/null; then
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
@@ -23,6 +26,7 @@ brew cask install iterm2
 # intellij
 brew cask install intellij-idea
 
+brew install node
 brew install tree
 brew install ack
 brew install bash-completion
