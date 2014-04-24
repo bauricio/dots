@@ -29,7 +29,7 @@
   untracked = red
 
 [core]
-  editor = /usr/local/bin/vim
+  editor = /usr/bin/vi
 	excludesfile = /Users/mauricio/.gitignore
   pager = less -FRX
   whitespace=fix,-indent-with-non-tab,trailing-space,space-before-tab,cr-at-eol

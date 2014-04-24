@@ -31,9 +31,11 @@ brew install tree
 brew install ack
 brew install bash-completion
 brew install ssh-copy-id
+brew install selecta
 
 # use solarize colors on iterm2
 # set global shortcut for iterm2
+# create bash and zsh profiles, where bash -l
 # make (alt ->) jump words
 # Caps->Control
 # F keys as functions
@@ -50,6 +52,12 @@ VIM_DIR="$HOME/.vim";
 if [ ! -d "$VIM_DIR" ]; then
   git clone https://github.com/bauricio/vim-files $VIM_DIR
   $VIM_DIR/install.sh
+fi
+
+OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
+if [ ! -d "$OH_MY_ZSH_DIR" ]; then
+  git clone https://github.com/bauricio/oh-my-zsh $OH_MY_ZSH_DIR
+  chsh -s /bin/zsh
 fi
 
 #### Productivity ####
@@ -86,3 +94,4 @@ brew cask install dropbox
 #### Fun ####
 brew cask install steam
 brew cask install spotify
+brew cask install simple-comic
