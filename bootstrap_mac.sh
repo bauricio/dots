@@ -31,6 +31,7 @@ brew install tree
 brew install ack
 brew install bash-completion
 brew install ssh-copy-id
+brew install wget
 brew install selecta
 
 # use solarize colors on iterm2
