@@ -50,6 +50,7 @@
   ss = status -s
   ci = commit
   cia = commit --amend -C HEAD
+  cp = cherry-pick
   co = checkout
   cf = "!git ss | grep UU --color"
   ccf = "!git ss | grep UU --color | wc -l"
@@ -70,4 +71,4 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
-  default = simple
+  default = tracking
