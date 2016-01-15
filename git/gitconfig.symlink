@@ -9,7 +9,7 @@
   commit = auto
   diff = auto
   interactive = auto
-  ui = true
+	ui = auto
   pager = true
 
 [color "branch"]
@@ -29,7 +29,7 @@
   untracked = red
 
 [core]
-  editor = /usr/bin/vi
+	editor = /usr/bin/vim
 	excludesfile = /Users/mauricio/.gitignore
   pager = less -FRX
   whitespace=fix,-indent-with-non-tab,trailing-space,space-before-tab,cr-at-eol
@@ -40,6 +40,7 @@
 [alias]
   l = log
   lg = log --graph --pretty=format:'%C(yellow)%h %Cblue%aN %Cgreen%ar %Creset%s'
+  lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ls = log --stat
   last = log -1 HEAD
   w = log --name-status #short whatchanged
@@ -64,6 +65,10 @@
   aa = add --all
   up = log origin/master..HEAD
   ll = !git log --color=always -z | perl -ln0e 'print unless /git-svn-id/' | less -FRX
+	df = diff --cached --color --color-words
+	dff = diff --color --color-words
+	current-branch = rev-parse --abbrev-ref HEAD
+	graph = log --graph --decorate --oneline --branches
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -71,4 +76,4 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
-  default = tracking
+  default = current

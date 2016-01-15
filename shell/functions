@@ -128,3 +128,7 @@ last_svn_ref_for() {
   fi;
   svn log -l $log_size $svn_address | grep -B2 "$1:" | egrep "r\d.*" | awk '{print $1;}' | sed 's/r//g'; 
 }
+
+whos_listen() {
+  lsof -n -i4TCP:"$1" | grep LISTEN
+}

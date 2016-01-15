@@ -18,3 +18,4 @@ esac
 alias g="git"
 alias be='bundle exec'
 alias tndone='terminal-notifier -message "Done"'
+alias rake='noglob rake'
