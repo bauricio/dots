@@ -57,6 +57,7 @@
   ccf = "!git ss | grep UU --color | wc -l"
   br = branch
   p = push
+  punch = push --force-with-lease
   pr = pull -r
   r = remote
   unstage = reset HEAD --
